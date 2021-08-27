@@ -10,6 +10,7 @@ Graph createGraph(int qtt_edges){
   graph.reserve(qtt_edges);
   return graph;
 }
+
 Graph kruskalAlgorithm(Graph graph, int qtt_vertices){
   Graph MST = createGraph(qtt_vertices - 1);
   DisjointSet set = createDSU(qtt_vertices);
@@ -19,7 +20,6 @@ Graph kruskalAlgorithm(Graph graph, int qtt_vertices){
   
   */
   sort(graph.begin(), graph.end());
-  
   for(Edge edge: graph){
     /*
     A ideia é justamente verificar se pode-se 
@@ -28,7 +28,7 @@ Graph kruskalAlgorithm(Graph graph, int qtt_vertices){
     
     se ele unir, então essa aresta faz parte do MST
     */
-    if(unionDSU(&set, edge.second.first, edge.second.first)){
+    if(unionDSU(&set, edge.second.first, edge.second.second)){
       MST.push_back(edge);
       // total_weight += edge.first;
     }
